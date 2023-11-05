@@ -334,6 +334,7 @@ class Setting extends Model
             'ldap_basedn',
             'ldap_filter',
 	    'ldap_login_group',
+	    'ldap_vip_group',
             'ldap_username_field',
             'ldap_lname_field',
             'ldap_fname_field',
