@@ -67,6 +67,7 @@ class LdapSync extends Command
         $ldap_result_manager = Setting::getSettings()->ldap_manager;
         $ldap_default_group = Setting::getSettings()->ldap_default_group;
 	$ldap_login_group = Setting::getSettings()->ldap_login_group;
+	$ldap_vip_group = Setting::getSettings()->ldap_vip_group;
 
         try {
             $ldapconn = Ldap::connectToLdap();
@@ -219,6 +220,7 @@ class LdapSync extends Command
                 $item['location'] = $results[$i][$ldap_result_location][0] ?? '';
 
 		$useractivated = (array_key_exists('memberof', $results[$i]) && in_array(preg_replace('/\s*,\s*/', ',', strtolower($ldap_login_group)), array_map('strtolower', $results[$i]['memberof'])) || (!$ldap_login_group)) ? 1 : 0; //Reads the LDAP Login Group and set the permssion to login to 1 if user is in group
+		$userisvip = (array_key_exists('memberof', $results[$i]) && in_array(preg_replace('/\s*,\s*/', ',', strtolower($ldap_vip_group)), array_map('strtolower', $results[$i]['memberof']))) ? 1 : 0; //Reads the LDAP Login Group and set the permssion to login to 1 if user is in group
 
                 // ONLY if you are using the "ldap_location" option *AND* you have an actual result
                 if ($ldap_result_location && $item['location']) {
@@ -243,6 +245,11 @@ class LdapSync extends Command
                 }
 
             //If a sync option is not filled in on the LDAP settings don't populate the user field
+	   
+	    if($userisvip)
+	    {
+		    $user->vip=1;
+		   }
             if($ldap_result_username  != null){
                 $user->username = $item['username'];
             }
