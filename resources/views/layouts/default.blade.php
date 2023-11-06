@@ -510,9 +510,6 @@
                                             {{ trans('admin/hardware/general.requestable') }}
                                         </a>
                                     </li>
-			               @if ($snipeSettings->privacy_policy_link!='')
-                                    </div>
-                                    @endif
 
 
                                     @can('audit', \App\Models\Asset::class)
@@ -527,6 +524,10 @@
                                             </a>
                                         </li>
                                     @endcan
+				     @if ($snipeSettings->show_standard_status==0)
+                                    </div>
+                                    @endif
+
 
                                     <li class="divider">&nbsp;</li>
                                     @can('checkin', \App\Models\Asset::class)
