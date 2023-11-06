@@ -453,7 +453,9 @@
                                         @endforeach
                                     @endif
 
-
+				    @if ($snipeSettings->show_standard_status==0)
+				    <div class=hidden>
+				    @endif
                                     <li{!! (Request::query('status') == 'Deployed' ? ' class="active"' : '') !!}>
                                         <a href="{{ url('hardware?status=Deployed') }}">
                                             <i class="far fa-circle text-blue fa-fw"></i>
@@ -508,6 +510,10 @@
                                             {{ trans('admin/hardware/general.requestable') }}
                                         </a>
                                     </li>
+			               @if ($snipeSettings->privacy_policy_link!='')
+                                    </div>
+                                    @endif
+
 
                                     @can('audit', \App\Models\Asset::class)
                                         <li{!! (Request::is('hardware/audit/due') ? ' class="active"' : '') !!}>

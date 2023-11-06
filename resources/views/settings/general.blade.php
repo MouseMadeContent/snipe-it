@@ -144,6 +144,23 @@
                                </p>
                            </div>
                        </div>
+                       <!-- show standard status -->
+                       <div class="form-group">
+                           <div class="col-md-3">
+                               <strong>{{ trans('admin/settings/general.show_standard_status') }}</strong>
+                           </div>
+                           <div class="col-md-9">
+                               <label class="form-control">
+                                   {{ Form::checkbox('show_standard_status', '1', Request::old('show_standard_status', $setting->show_standard_status),array('class' => 'minimal')) }}
+                                   {{ trans('general.yes') }}
+                               </label>
+                               {!! $errors->first('show_standard_status', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
+                               <p class="help-block">
+                               {{ trans('admin/settings/general.show_standard_status_help_text') }}
+                               </p>
+                           </div>
+                       </div>
+
 
 
                        <!-- Per Page -->

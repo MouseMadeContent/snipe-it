@@ -342,13 +342,14 @@ class SettingsController extends Controller
 
         $setting->full_multiple_companies_support = $request->input('full_multiple_companies_support', '0');
         $setting->unique_serial = $request->input('unique_serial', '0');
+        $setting->show_standard_status = $request->input('show_standard_status');
         $setting->show_images_in_email = $request->input('show_images_in_email', '0');
         $setting->show_archived_in_list = $request->input('show_archived_in_list', '0');
         $setting->dashboard_message = $request->input('dashboard_message');
         $setting->email_domain = $request->input('email_domain');
         $setting->email_format = $request->input('email_format');
         $setting->username_format = $request->input('username_format');
-        $setting->require_accept_signature = $request->input('require_accept_signature');
+#        $setting->require_accept_signature = $request->input('require_accept_signature');
         $setting->show_assigned_assets = $request->input('show_assigned_assets', '0');
         if (! config('app.lock_passwords')) {
             $setting->login_note = $request->input('login_note');
