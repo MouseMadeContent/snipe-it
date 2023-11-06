@@ -147,6 +147,8 @@ return [
     'full_multiple_companies_support_help_text' => 'Restricting users (including admins) assigned to companies to their company\'s assets.',
     'full_multiple_companies_support_text' => 'Full Multiple Companies Support',
     'show_in_model_list'   => 'Show in Model Dropdowns',
+    'show_standard_status'   => 'Show standard status',
+    'show_standard_status_help_text'   => 'Enable / Disable the standard status on the side nav in the asset-menu ',
     'optional'					=> 'optional',
     'per_page'                  => 'Results Per Page',
     'php'                       => 'PHP Version',
